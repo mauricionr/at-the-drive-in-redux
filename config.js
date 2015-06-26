@@ -18,6 +18,7 @@ System.config({
 System.config({
   "map": {
     "angular2": "npm:angular2@2.0.0-alpha.28",
+    "reflect-metadata": "npm:reflect-metadata@0.1.0",
     "typescript": "github:mhegazy/typescript@v1.5-beta2",
     "github:jspm/nodelibs-assert@0.1.0": {
       "assert": "npm:assert@1.3.0"

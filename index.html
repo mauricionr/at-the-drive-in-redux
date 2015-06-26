@@ -5,12 +5,9 @@
     <script src="config.js"></script>
 </head>
 <body>
-    <div id="content"></div>
+    <app></app>
     <script>
-        System.import('app').then(function(m) {
-            var element = document.getElementById("content");
-            m.main(element);
-        });
+        System.import('app');
     </script>
 </body>
 </html>
