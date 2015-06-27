@@ -2,6 +2,15 @@ System.config({
   "baseURL": "/",
   "defaultJSExtensions": true,
   "transpiler": "typescript",
+  "babelOptions": {
+    "optional": [
+      "runtime"
+    ],
+    "stage": 1
+  },
+  "typescriptOptions": {
+    "emitDecoratorMetadata": true
+  },
   "paths": {
     "github:*": "jspm_packages/github/*",
     "app": "src",
@@ -437,4 +446,3 @@ System.config({
     }
   }
 });
-
