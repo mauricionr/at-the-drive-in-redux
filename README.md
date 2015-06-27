@@ -3,9 +3,24 @@
 Usage
 =====
 
+install everything
+
 ```bash
 npm install -g http-server
 npm install -g jspm@beta
+npm install -g babel
 jspm install
+npm install
+```
+
+now split terminal tabs
+
+1
+```bash
 http-server -p 8080
+```
+
+2
+```bash
+babel-node server.js
 ```
