@@ -14,7 +14,10 @@ interface Movie {
 @View({
   directives: [NgFor],
   template:`
-    <div *ng-for="#movie of movies">{{movie.title}}</div>
+    <div *ng-for="#movie of movies">
+      <h4>{{movie.title}}</h4>
+      <img src={{movie.image}} />
+    </div>
   `
 })
 export class MovieList {

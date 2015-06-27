@@ -38,10 +38,14 @@ export class MoviesAPI {
       .map(res => res.json())
       .map(res => {
 
+
+        console.log('yoyo', res.data.movies)
+
         res.data.movies.map((movie) => {
           movies.push({
             title: movie.title_long,
-            magnet: magnetURI(movie.torrents[0].hash, movie.title_long)
+            magnet: magnetURI(movie.torrents[0].hash, movie.title_long),
+            image: movie.medium_cover_image
           })
         });
 
