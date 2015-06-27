@@ -20,14 +20,15 @@ export function magnetURI(hash, title) {
   return `magnet:?xt=urn:btih:${hash}&dn=${encodeURIComponent(title)}&tr=${trackers.join('&tr=')}`;
 }
 
-export function watchTorrent(magnet) {
-  return fetch('http://localhost:3001/api/torrent-stream?magnet='+magnet);
-}
-
 export class MoviesAPI {
 
   constructor(@Inject(Http) private http: Http) {
 
+  }
+
+  watchTorrent(magnet: string) {
+    this.http.get('http://localhost:3000/api/torrent-stream?magnet='+magnet)
+      .subscribe(res => console.log('posting...', res))
   }
 
   getMovies() {
@@ -37,10 +38,6 @@ export class MoviesAPI {
     return this.http.get('https://yts.to/api/v2/list_movies.json')
       .map(res => res.json())
       .map(res => {
-
-
-        console.log('yoyo', res.data.movies)
-
         res.data.movies.map((movie) => {
           movies.push({
             title: movie.title_long,

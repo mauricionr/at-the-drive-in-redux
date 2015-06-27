@@ -10,5 +10,9 @@
     "devDependencies": {
       "typescript": "github:mhegazy/typescript@v1.5-beta2"
     }
+  },
+  "devDependencies": {
+    "express": "^4.13.0",
+    "peerflix": "^0.30.0"
   }
 }
