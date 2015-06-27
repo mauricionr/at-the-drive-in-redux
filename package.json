@@ -4,7 +4,8 @@
     "dependencies": {
       "angular2": "npm:angular2@^2.0.0-alpha.28",
       "express": "npm:express@^4.13.0",
-      "reflect-metadata": "npm:reflect-metadata@^0.1.0"
+      "reflect-metadata": "npm:reflect-metadata@^0.1.0",
+      "zone.js": "npm:zone.js@^0.5.1"
     },
     "devDependencies": {
       "typescript": "github:mhegazy/typescript@v1.5-beta2"

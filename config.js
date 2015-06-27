@@ -21,6 +21,7 @@ System.config({
     "express": "npm:express@4.13.0",
     "reflect-metadata": "npm:reflect-metadata@0.1.0",
     "typescript": "github:mhegazy/typescript@v1.5-beta2",
+    "zone.js": "npm:zone.js@0.5.1",
     "github:jspm/nodelibs-assert@0.1.0": {
       "assert": "npm:assert@1.3.0"
     },

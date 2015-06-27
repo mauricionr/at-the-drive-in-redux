@@ -30,9 +30,24 @@ export class MoviesAPI {
 
   }
 
-  getMovies(http) {
-    return http.get('https://yts.to/api/v2/list_movies.json')
-      .map(res => res.json());
+  getMovies() {
+
+    let movies = [];
+
+    return this.http.get('https://yts.to/api/v2/list_movies.json')
+      .map(res => res.json())
+      .map(res => {
+
+        res.data.movies.map((movie) => {
+          movies.push({
+            title: movie.title_long,
+            magnet: magnetURI(movie.torrents[0].hash, movie.title_long)
+          })
+        });
+
+        return movies;
+
+      });
   }
 
 }

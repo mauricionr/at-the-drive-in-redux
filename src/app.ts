@@ -1,4 +1,5 @@
 import 'reflect-metadata';
+import 'zone.js';
 
 import { bootstrap, httpInjectables, Component, View } from 'angular2/angular2';
 
@@ -14,7 +15,7 @@ import { MoviesAPI } from './utils/API';
 @View({
   directives: [ RouterOutlet, MovieList ],
   template: `
-      <movie-list></movie-list>
+      <router-outlet></router-outlet>
   `,
 })
 @RouteConfig([

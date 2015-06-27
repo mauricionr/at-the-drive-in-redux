@@ -9,7 +9,7 @@ interface Movie {
 
 @Component({
   selector: 'movie-list',
-  appInjector: [MoviesAPI, Http]
+  appInjector: [MoviesAPI]
 })
 @View({
   directives: [NgFor],
@@ -22,21 +22,12 @@ export class MovieList {
   movies: Array<Movie>;
   moviesSubscription;
 
-  constructor(@Inject(MoviesAPI) private moviesAPI: MoviesAPI, @Inject(Http) http: Http) {
+  constructor(@Inject(MoviesAPI) private moviesAPI: MoviesAPI) {
 
-    this.movies = [{ title: 'yoyo' }];
-
-    this.moviesSubscription = moviesAPI.getMovies(http)
+    this.moviesSubscription = moviesAPI.getMovies()
       .subscribe((r) => {
 
-        r.data.movies.map((movie) => {
-          this.movies.push({
-            title: movie.title_long,
-            magnet: magnetURI(movie.torrents[0].hash, movie.title_long)
-          })
-        })
-
-        console.log(this.movies)
+        this.movies = r;
 
       });
 
