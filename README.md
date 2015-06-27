@@ -1,4 +1,4 @@
-[Info on setting up jspm with ng2 here](https://gist.github.com/robertpenner/22d71ae9ec5e9ac212be/)
+[Info on setting up jspm with ng2 here](https://gist.github.com/robwormald/429e01c6d802767441ec)
 
 Usage
 =====
