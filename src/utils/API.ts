@@ -16,14 +16,14 @@ var API = {
   list: 'https://yts.to/api/v2/list_movies.json' // http://yts.to/api#list_movies
 };
 
-export function magnetURI(hash, title) {
-  return `magnet:?xt=urn:btih:${hash}&dn=${encodeURIComponent(title)}&tr=${trackers.join('&tr=')}`;
-}
-
 export class MoviesAPI {
 
   constructor(@Inject(Http) private http: Http) {
 
+  }
+
+  magnetURI(hash, title) {
+    return `magnet:?xt=urn:btih:${hash}&dn=${encodeURIComponent(title)}&tr=${trackers.join('&tr=')}`;
   }
 
   watchTorrent(magnet: string) {
@@ -41,7 +41,7 @@ export class MoviesAPI {
         res.data.movies.map((movie) => {
           movies.push({
             title: movie.title_long,
-            magnet: magnetURI(movie.torrents[0].hash, movie.title_long),
+            magnet: this.magnetURI(movie.torrents[0].hash, movie.title_long),
             image: movie.medium_cover_image
           })
         });
