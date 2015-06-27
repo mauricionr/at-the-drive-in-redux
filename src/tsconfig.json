@@ -16,6 +16,7 @@
     ],
     "files": [
         "./app.ts",
-        "./greeter.ts"
+        "./components/MovieList/MovieList.ts",
+        "./utils/API.ts"
     ]
 }
