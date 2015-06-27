@@ -4,6 +4,8 @@ Usage
 =====
 
 ```bash
-npm install -g http-server && npm install
+npm install -g http-server
+npm install -g jspm@beta
+jspm install
 http-server -p 8080
 ```
