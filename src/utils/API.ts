@@ -18,9 +18,7 @@ var API = {
 
 export class MoviesAPI {
 
-  constructor(@Inject(Http) private http: Http) {
-
-  }
+  constructor(@Inject(Http) private http: Http) { }
 
   magnetURI(hash, title) {
     return `magnet:?xt=urn:btih:${hash}&dn=${encodeURIComponent(title)}&tr=${trackers.join('&tr=')}`;
