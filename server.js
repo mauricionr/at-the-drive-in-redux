@@ -4,10 +4,8 @@ var exec = require('child_process').exec;
 const api = express()
   .get('/torrent-stream/:magnet?', function(req, res) {
     var cmd = exec('peerflix "' + req.query.magnet + '" --vlc', function (error, stdout, stderr) {
-        console.log('send back output to client', stdout);
+      res.send({ data: stdout })
     });
-
-    res.send({ data: 'torrent data' })
   });
 
 const app = express()

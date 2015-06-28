@@ -1,5 +1,5 @@
-import { Component, View, onDestroy } from 'angular2/angular2';
-import { magnetURI, MoviesAPI } from '../../utils/API';
+import { Component, View, onInit, onDestroy } from 'angular2/angular2';
+import { MoviesAPI } from '../../utils/API';
 import { Inject } from 'angular2/di';
 import { NgFor } from 'angular2/directives';
 
@@ -9,15 +9,15 @@ interface Movie {
 
 @Component({
   selector: 'movie-list',
-  appInjector: [MoviesAPI],
-  lifecycle: [onDestroy]
+  lifecycle: [onInit, onDestroy]
 })
 @View({
   directives: [NgFor],
   template:`
     <div *ng-for="#movie of movies">
       <h4>{{movie.title}}</h4>
-      <img (^click)="onMovieSelect($event, movie)" src={{movie.image}} />
+      <img src={{movie.image}} />
+      <button (^click)="onMovieSelect($event, movie)">Play</button>
     </div>
   `
 })
@@ -26,7 +26,7 @@ export class MovieList {
   movies: Array<Movie>;
   moviesSubscription;
 
-  constructor(@Inject(MoviesAPI) private moviesAPI: MoviesAPI) {
+  constructor(private moviesAPI: MoviesAPI) {
 
     this.moviesSubscription = moviesAPI.getMovies()
       .subscribe((r) => {
@@ -38,7 +38,12 @@ export class MovieList {
   }
 
   onMovieSelect(e, movie) {
-    this.moviesAPI.watchTorrent(movie.magnet);
+    this.moviesAPI.watchTorrent(movie.magnet)
+      .subscribe(res => console.log(res))
+  }
+
+  onInit() {
+    console.log('Movie List Component Instantiated')
   }
 
   onDestroy() {

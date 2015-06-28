@@ -32,15 +32,22 @@ export class MoviesAPI {
   }
 
   watchTorrent(magnet: string) {
-    this.http.get('http://localhost:3000/api/torrent-stream?magnet='+magnet)
-      .subscribe(res => console.log('posting...', res))
+    return this.http.get('http://localhost:3000/api/torrent-stream?magnet='+magnet)
+      .map(res => res.json())
+      .map(res => {
+        let re = /(\b(https?|ftp):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/gim;
+        let found = res.data.match(re);
+
+        return found;
+
+      });
   }
 
   getMovies() {
 
     let movies = [];
 
-    return this.http.get('https://yts.to/api/v2/list_movies.json')
+    return this.http.get('https://yts.to/api/v2/list_movies.json?limit=15&page=2')
       .map(res => res.json())
       .map(res => {
         res.data.movies.map((movie) => {
