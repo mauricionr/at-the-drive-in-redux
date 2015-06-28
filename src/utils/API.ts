@@ -43,10 +43,7 @@ export class MoviesAPI {
     return this.http.get('http://localhost:8080/torrent-stream?magnet='+magnet)
       .map(res => res.json())
       .map(res => {
-        let re = /(\b(https?|ftp):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/gim;
-        let found = res.data.match(re);
-
-        return found;
+        return res.address;
 
       });
   }
