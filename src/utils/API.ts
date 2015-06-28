@@ -40,7 +40,7 @@ export class MoviesAPI {
   }
 
   watchTorrent(magnet: string) {
-    return this.http.get('http://localhost:3000/api/torrent-stream?magnet='+magnet)
+    return this.http.get('http://localhost:8080/torrent-stream?magnet='+magnet)
       .map(res => res.json())
       .map(res => {
         let re = /(\b(https?|ftp):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/gim;
