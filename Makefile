@@ -2,6 +2,10 @@ WELCOME=\033[37m🌊🌊🌊🌊🌊🌊🌊🌊🌊 At the Drive-In 🌊🌊�
 
 all: hello npm-global jspm npm server browser
 
+install: hello npm-global jspm npm
+
+dev: hello server browser
+
 hello:
 	@echo "\n${WELCOME}\n"
 
