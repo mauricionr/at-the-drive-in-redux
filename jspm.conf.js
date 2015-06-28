@@ -27,6 +27,7 @@ System.config({
 System.config({
   "map": {
     "angular2": "npm:angular2@2.0.0-alpha.28",
+    "automattic/socket.io-client": "github:automattic/socket.io-client@1.3.5",
     "express": "npm:express@4.13.0",
     "reflect-metadata": "npm:reflect-metadata@0.1.0",
     "typescript": "github:mhegazy/typescript@v1.5-beta2",
@@ -446,3 +447,4 @@ System.config({
     }
   }
 });
+

@@ -1,4 +1,5 @@
 import { Http, HttpConfig, Inject } from 'angular2/angular2';
+import io from 'automattic/socket.io-client/socket.io';
 
 export class MoviesAPI {
 
@@ -7,6 +8,13 @@ export class MoviesAPI {
 
   constructor(@Inject(Http) private http: Http) {
     this.init();
+
+    let socket = io();
+
+    socket.on('connect', () => {
+      console.log('socket is wired up on client')
+    })
+
   }
 
   init() {
