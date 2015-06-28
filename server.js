@@ -7,8 +7,6 @@ var exec = require('child_process').exec;
 app.use(express.static(__dirname + "/"));
 
 app.get('/torrent-stream/:magnet?', function(req, res) {
-
-  console.log('eyyo')
   var cmd = exec('peerflix "' + req.query.magnet + '" --webplay', function (error, stdout, stderr) {
     res.send({ data: stdout })
   });
