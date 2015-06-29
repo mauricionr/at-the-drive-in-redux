@@ -52,9 +52,12 @@ export class MoviesAPI {
 
     let movies = [];
 
-    return this.http.get('https://yts.to/api/v2/list_movies.json?limit=15&page=2')
+    return this.http.get('https://yts.to/api/v2/list_movies.json?limit=50')
       .map(res => res.json())
       .map(res => {
+
+        console.log(res)
+
         res.data.movies.map((movie) => {
           movies.push({
             title: movie.title_long,
