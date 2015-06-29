@@ -1,0 +1,14 @@
+body {
+  height: 100%;
+  width: 100%;
+  overflow-y: hidden;
+}
+
+.movie-list {
+  max-height: 100em;
+  overflow-y: auto;
+}
+
+.movie-list .movie {
+  float: left;
+}
