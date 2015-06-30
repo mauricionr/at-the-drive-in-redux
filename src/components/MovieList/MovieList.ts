@@ -14,12 +14,14 @@ interface Movie {
 @View({
   directives: [NgFor, NgIf],
   template:`
-    <div class="movie-list">
+    <div>
       <video *ng-if="torrent.loaded" width="900" height="450" src={{torrent.src}} preload="auto" controls></video>
-      <div *ng-for="#movie of movies" class="movie">
-        <h4>{{movie.title}}</h4>
-        <img src={{movie.image}} />
-        <button (^click)="onMovieSelect($event, movie)">Play</button>
+      <div class="movie-list">
+        <div *ng-for="#movie of movies" class="movie">
+          <h4>{{movie.title}}</h4>
+          <img src={{movie.image}} />
+          <button (^click)="onMovieSelect($event, movie)">Play</button>
+        </div>
       </div>
     </div>
   `
