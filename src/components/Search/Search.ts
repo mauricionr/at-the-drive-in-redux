@@ -13,7 +13,8 @@ import {Validators, ControlGroup, FormBuilder, NgModel, NgFormModel} from 'angul
   template:`
     <form class="navbar-form navbar-right" onsubmit="return false;" [ng-form-model]="searchForm">
       <div class="form-group">
-        <input type="text" #tquery (keyup)="submit(tquery)" ng-control="query" placeholder="Search for a movie!" class="form-control">
+        <input type="text" #tquery ng-control="query" placeholder="Search for a movie!" class="form-control">
+        <button (^click)="submit(tquery)">Submit</button>
       </div>
     </form>
   `
@@ -28,7 +29,7 @@ export class Search {
   }
 
   submit(query:{value:string}) {
-    // call search here
+    console.log('searching', query.value)
   }
 
   onInit() {
