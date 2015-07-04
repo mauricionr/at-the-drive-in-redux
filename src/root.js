@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
+import React from 'react';
 import MovieList from './components/MovieList/MovieList';
 import MoviesAPI from './utils/API';
 
-export default class Root extends Component {
+export default class Root extends React.Component {
 
   constructor(props, context) {
     super(props, context);
