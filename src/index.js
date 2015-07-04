@@ -1,11 +1,15 @@
 import React from 'react'
-import Root from './root';
 import { Provider } from 'redux/react';
 import createRedux from './lib/createRedux';
 import request from 'superagent';
 import qs from 'qs';
 import createAPI from './lib/createAPI';
+import BrowserHistory from 'react-router/lib/BrowserHistory';
+import Router from './components/Router';
 
+console.log('wat', BrowserHistory)
+
+const history = new BrowserHistory;
 const api = createAPI(
   /**
  * Client's createRequest() method
@@ -26,7 +30,7 @@ const redux = createRedux(api, {});
 
 React.render(
   <Provider redux={redux}>
-    {() => <Root />}
+    {() => <Router {...{ history }} />}
   </Provider>,
   document.getElementById('app')
 )
