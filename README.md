@@ -1,8 +1,8 @@
-At the Drive-In
-===============
+# At the Drive-In Redux
 
-Usage
-=====
+Streaming movie app using redux flux-ish implementation
+
+# Usage
 
 To install and run app:
 ```bash
@@ -13,8 +13,6 @@ To just run app:
 ```bash
 make dev
 ```
-
-[Info on setting up jspm with ng2 here](https://gist.github.com/robwormald/429e01c6d802767441ec)
 
 # Thanks
 
