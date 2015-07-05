@@ -6,6 +6,11 @@ let MovieList = React.createClass({
 
   mixins: [ Navigation ],
 
+  _playMovie(movie) {
+    this.props.watchMovie(movie.magnet);
+    this.transitionTo('screen');
+  },
+
   _renderMovies() {
 
     let movies = [];
@@ -15,7 +20,7 @@ let MovieList = React.createClass({
         <div className="movie" key={i}>
           <h4>{movie.title}</h4>
           <img src={movie.image} />
-          <button onClick={() => this.transitionTo('screen')}>Play</button>
+          <button onClick={() => this._playMovie(movie)}>Play</button>
         </div>
       )
     });
