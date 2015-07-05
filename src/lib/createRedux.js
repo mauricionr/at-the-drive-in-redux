@@ -1,8 +1,6 @@
 import _ from 'lodash';
 import { createDispatcher, createRedux, composeStores } from 'redux';
-import Movies from '../reducers/Movies';
-
-// TODO: import * as reducers
+import * as reducers from '../reducers/index';
 
 function promiseMiddleware(api, getState) {
   return next =>
@@ -19,12 +17,12 @@ function promiseMiddleware(api, getState) {
     };
 }
 
-export default function (api, intialState) {
+export default function (api, initialState) {
   const dispatcher = createDispatcher(
-    composeStores(Movies),
+    composeStores(reducers),
     getState => [ promiseMiddleware(api, getState) ]
   );
-  const redux = createRedux(dispatcher, intialState);
+  const redux = createRedux(dispatcher, initialState);
 
   return redux;
 }
