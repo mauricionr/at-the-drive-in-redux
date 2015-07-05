@@ -119,3 +119,59 @@ video {
 @keyframes coreAnimate{
   to{ height:90%; width:90%; }
 }
+
+.circles {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  margin: auto;
+  top: 0px;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+}
+
+.circles div {
+  border-radius: 100%;
+  border: 5px solid navy;
+  box-shadow: 0px 0px 20px navy, inset 0px 0px 20px navy;
+  height: 50px;
+  width: 50px;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
+
+.circles div:nth-child(1) {
+  transform: rotateY(0deg);
+  animation: spinY 2s infinite linear;
+}
+
+.circles div:nth-child(2) {
+  transform: rotateX(0deg);
+  animation: spinX 2s infinite linear;
+}
+
+.circles div:nth-child(3) {
+  border: 5px dashed navy;
+  transform: rotateZ(0deg);
+  animation: spinZ 1s infinite ease-in-out;
+}
+
+@keyframes spinY {
+  to {
+    transform: rotateY(360deg);
+  }
+}
+
+@keyframes spinX {
+  to {
+    transform: rotateX(360deg);
+  }
+}
+
+@keyframes spinZ {
+  to {
+    transform: rotateZ(180deg);
+  }
+}
