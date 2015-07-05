@@ -1,30 +1,36 @@
 import React, { PropTypes } from 'react';
+import { Navigation } from 'react-router';
+import { Loader } from './index';
 
-export default class MovieList {
+let MovieList = React.createClass({
+
+  mixins: [ Navigation ],
 
   _renderMovies() {
 
     let movies = [];
 
-    this.props.movies.map(movie => {
+    this.props.movies.map((movie, i) => {
       movies.push(
-        <div class="movie">
+        <div className="movie" key={i}>
           <h4>{movie.title}</h4>
           <img src={movie.image} />
-          <button>Play</button>
+          <button onClick={() => this.transitionTo('screen')}>Play</button>
         </div>
       )
     });
 
     return movies;
-  }
+  },
 
   render() {
     return (
-      <div class="movie-list">
-        {this._renderMovies()}
+      <div className="movie-list">
+        {this.props.movies.length ? this._renderMovies(): <Loader />}
       </div>
     );
   }
 
-}
+});
+
+export default MovieList;
