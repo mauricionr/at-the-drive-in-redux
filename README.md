@@ -1,6 +1,6 @@
 # At the Drive-In Redux
 
-Streaming movie app using redux flux-ish implementation
+Streaming movie app using redux flux implementation
 
 # Usage
 
