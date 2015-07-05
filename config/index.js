@@ -13,7 +13,7 @@ export default {
    * API Server
    */
   apiServer: {
-    urlPrefix: 'https://yts.to/api/v2'
+    urlPrefix: 'http://localhost:8080'
   },
 
   /**

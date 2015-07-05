@@ -1,7 +1,5 @@
 'use strict';
 
 export default {
-  apiServer: {
-    urlPrefix: 'https://yts.to/api/v2'
-  }
+  server: 'http://localhost:8080'
 };
