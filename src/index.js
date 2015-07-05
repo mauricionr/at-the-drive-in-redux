@@ -6,23 +6,21 @@ import qs from 'qs';
 import createAPI from './lib/createAPI';
 import BrowserHistory from 'react-router/lib/BrowserHistory';
 import Router from './components/Router';
-
-console.log('wat', BrowserHistory)
+import urls from '../config/client';
 
 const history = new BrowserHistory;
 const api = createAPI(
-  /**
- * Client's createRequest() method
- */
-  ({ method, headers = {}, pathname, query = {}, body = {} }) => {
-    pathname = pathname.replace(new RegExp(`^${apiServer.urlPrefix}`), '');
-    var url = `${apiServer.urlPrefix}${pathname}`;
 
-    return request(method, url)
-      .query(qs.stringify(query))
-      .set(headers)
-      .send(body);
+  ({ method, headers = {}, pathname, query = {}, body = {} }) => {
+
+    pathname = pathname.replace(new RegExp(`^${urls.server}`), '');
+    var url = `${urls.server}${pathname}?${qs.stringify(query)}`;
+
+    return window.fetch(url)
+      .then(r => r.json())
+      .then(r => r)
   }
+
 );
 
 /* global __INITIAL_STATE__:true */
