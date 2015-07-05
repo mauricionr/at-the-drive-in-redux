@@ -7,6 +7,7 @@ import createAPI from './lib/createAPI';
 import BrowserHistory from 'react-router/lib/BrowserHistory';
 import Router from './components/Router';
 import urls from '../config/client';
+import AsyncProps from 'react-router/lib/experimental/AsyncProps';
 
 const history = new BrowserHistory;
 const api = createAPI(
@@ -28,7 +29,7 @@ const redux = createRedux(api, {});
 
 React.render(
   <Provider redux={redux}>
-    {() => <Router {...{ history }} />}
+    {() => <Router {...{ history }} createElement={AsyncProps.createElement} />}
   </Provider>,
   document.getElementById('app')
 )

@@ -8,7 +8,7 @@ let MovieList = React.createClass({
 
   _playMovie(movie) {
     this.props.watchMovie(movie.magnet);
-    this.transitionTo('screen');
+    this.transitionTo('screen', { magnet: movie.magnet });
   },
 
   _renderMovies() {
