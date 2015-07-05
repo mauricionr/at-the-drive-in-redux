@@ -1,6 +1,7 @@
 body {
   height: 100%;
   width: 100%;
+  background: radial-gradient(#898989,#121212);
 }
 
 video {
@@ -9,115 +10,17 @@ video {
   height: 500px;
 }
 
+.btn-back {
+  font-family: fantasy;
+  font-size: 24px;
+}
+
 .movie-list {
   top: 0;
 }
 
 .movie-list .movie {
   float: left;
-}
-
-#cupcake{
-  position: absolute;
-  flex-direction:row;
-  -webkit-flex-direction:row;
-  -ms-flex-direction:row;
-  -mos-flex-direction:row;
-  -o-flex-direction:row;
-  justify-content:center;
-  -webkit-justify-content:center;
-  -ms-justify-content:center;
-  height:100%;
-  width:100%;
-}
-
-.letter{
-  font-size:50px;
-  color:#222;
-  font-family:tahoma;
-}
-
-.box{
-  display: box;
-	display: -webkit-box;
-	display: -moz-box;
-	display: -ms-flexbox;
-	display: -webkit-flex;
-	display: flex;
-}
-
-.cupcakeCircle, .cupcakeInner, .cupcakeCore{
-   border-radius:50%;
-  -webkit-border-radius:50%;
-  -moz-border-radius:50%;
-  -ms-border-radius:50%;
-}
-
-.cupcake, .letter, .cupcakeCircle, .cupcakeInner, .cupcakeCore{
-  flex:none;
-  -webkit-flex:none;
-  -moz-flex:none;
-  -ms-flex:none;
-  -o-flex:none;
-}
-
-.letter, .cupcakeCircle{
-  align-self:center;
-  -webkit-align-self:center;
-  -moz-align-self:center;
-  -o-align-self:center;
-  -ms-align-self:center;
-}
-.cupcakeCircle{
-  align-items:center;
-  -ms-align-items:center;
-  justify-content:center;
-  -ms-justify-content:center;
-  height:50px;
-  width:50px;
-  background-color:#222;
-}
-
-.cupcakeInner{
-  align-self:center;
-  -ms-align-self:center;
-  justify-content:center;
-  -ms-justify-content:center;
-  height:50%;
-  width:50%;
-  background-color:lightseagreen;
-  -webkit-animation-name:cupcakeAnimate;
-  -webkit-animation-duration:500ms;
-  -webkit-animation-direction:alternate;
-  -webkit-animation-timing-function:ease-in-out;
-  -webkit-animation-iteration-count:infinite;
-
-}
-.cupcakeCore{
-  align-self:center;
-  -ms-align-self:center;
-  height:25%;
-  width:25%;
-  background-color:#222;
-  -webkit-animation-name:coreAnimate;
-  -webkit-animation-duration:1s;
-  -webkit-animation-direction:alternate;
-  -webkit-animation-timing-function:ease-in-out;
-  -webkit-animation-iteration-count:infinite;
-}
-
-@-webkit-keyframes cupcakeAnimate{
-  to{ height:90%; width:90%; }
-}
-@keyframes cupcakeAnimate{
-  to{ height:90%; width:90%; }
-}
-
-@-webkit-keyframes coreAnimate{
-  to{ height:90%; width:90%; }
-}
-@keyframes coreAnimate{
-  to{ height:90%; width:90%; }
 }
 
 .circles {
@@ -133,8 +36,8 @@ video {
 
 .circles div {
   border-radius: 100%;
-  border: 5px solid navy;
-  box-shadow: 0px 0px 20px navy, inset 0px 0px 20px navy;
+  border: 5px solid aqua;
+  box-shadow: 0px 0px 20px aquamarine, inset 0px 0px 20px aquamarine;
   height: 50px;
   width: 50px;
   position: absolute;
@@ -153,7 +56,7 @@ video {
 }
 
 .circles div:nth-child(3) {
-  border: 5px dashed navy;
+  border: 5px dashed aqua;
   transform: rotateZ(0deg);
   animation: spinZ 1s infinite ease-in-out;
 }
