@@ -1,6 +1,8 @@
 import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
 
+// TODO: get url to stream movie from reducer
+
 export default class MovieScreen {
 
   render() {
