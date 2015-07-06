@@ -5,3 +5,4 @@ export { default as MovieList } from './MovieList'
 export { default as MovieScreen } from './MovieScreen'
 
 export { default as Loader } from './Loader'
+export { default as Search } from './Search'
