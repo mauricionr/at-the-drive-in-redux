@@ -1,5 +1,5 @@
 import React from 'react';
-import MovieList from './MovieList';
+import { MovieList, Search } from './index';
 import MoviesAPI from '../utils/API';
 import prepareRoute from '../decorators/prepareRoute';
 import * as MoviesActionCreators from '../actions/movies';
@@ -21,11 +21,14 @@ export default class Root extends React.Component {
         Movies
       }
     } = this;
-    
+
     const movies = Movies.get(`movies`).toJS();
 
     return (
-      <MovieList movies={movies} {...bindActionCreators(moviesActions, this.props.dispatch)} />
+      <div>
+        <Search {...bindActionCreators(moviesActions, this.props.dispatch)}/>
+        <MovieList movies={movies} {...bindActionCreators(moviesActions, this.props.dispatch)} />
+      </div>
     )
   }
 
