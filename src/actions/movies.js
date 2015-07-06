@@ -13,3 +13,10 @@ export function watchMovie(magnet) {
     res: await api(`/torrent-stream?magnet=${magnet}`)
   })
 }
+
+export function searchMovie(query) {
+  return async api => ({
+    type: ActionTypes.Movies.searchMovie,
+    res: await api(`/search?movie=${query}`)
+  })
+}
