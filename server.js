@@ -43,8 +43,6 @@ app.get('/torrent-stream/:magnet?', function(req, res) {
 
 })
 .get('/search/:movie?', (req, res) => {
-  console.log('searching for ', req.query.movie)
-
   request("GET", "https://yts.to/api/v2/list_movies.json?query_term=" + req.query.movie)
     .end((err, resp) => {
 

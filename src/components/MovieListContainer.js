@@ -13,7 +13,7 @@ import * as moviesActions from '../actions/movies';
   ];
 })
 @connect(({ Movies }) => ({ Movies }))
-export default class Root extends React.Component {
+export default class Root {
 
   render() {
     const {
@@ -26,7 +26,7 @@ export default class Root extends React.Component {
 
     return (
       <div>
-        <Search {...bindActionCreators(moviesActions, this.props.dispatch)}/>
+        <Search {...bindActionCreators(moviesActions, this.props.dispatch)} />
         <MovieList movies={movies} {...bindActionCreators(moviesActions, this.props.dispatch)} />
       </div>
     )

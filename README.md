@@ -2,6 +2,8 @@
 
 Streaming movie app using redux flux implementation
 
+If you like apps like Popcorn Time, you might like hacking on this :)
+
 # Usage
 
 To install and run app:
@@ -14,8 +16,12 @@ To just run app:
 make dev
 ```
 
+# TODO
+
+- [] cleanup peerflix server if already running
+
 # Thanks
 
-Thank you [Dan Abramov](https://twitter.com/dan_abramov) for creating [redux](https://github.com/gaearon/redux).
+Thank you [Dan Abramov](https://twitter.com/dan_abramov) for the inspiration and for creating [redux](https://github.com/gaearon/redux)!
 
-Also, the [redux-example](https://github.com/quangbuule/redux-example) helped a lot with getting up and running.
+Also, this [redux-example](https://github.com/quangbuule/redux-example) helped a lot with getting up and running.
