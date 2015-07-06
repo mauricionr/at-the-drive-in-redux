@@ -42,6 +42,31 @@ app.get('/torrent-stream/:magnet?', function(req, res) {
     });
 
 })
+.get('/search/:movie?', (req, res) => {
+  console.log('searching for ', req.query.movie)
+
+  request("GET", "https://yts.to/api/v2/list_movies.json?query_term=" + req.query.movie)
+    .end((err, resp) => {
+
+      if(!resp) {
+        res.send([]);
+        return;
+      }
+
+      let movies = [];
+
+      resp.body.data.movies.map((movie) => {
+        movies.push({
+          title: movie.title_long,
+          magnet: magnetURI(movie.torrents[0].hash, movie.title_long),
+          image: movie.medium_cover_image
+        })
+      });
+
+      res.send(movies);
+    });
+
+})
 
 app.all('/*', function(req, res, next) {
   res.header('Access-Control-Allow-Origin', 'http://localhost:8080')
