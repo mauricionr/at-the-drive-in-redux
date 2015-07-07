@@ -18,7 +18,7 @@ make dev
 
 # TODO
 
-- [] cleanup peerflix server if already running
+- [ ] cleanup peerflix server if already running
 
 # Thanks
 
