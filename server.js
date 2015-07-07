@@ -28,17 +28,7 @@ app.get('/torrent-stream/:magnet?', function(req, res) {
         return;
       }
 
-      let movies = [];
-
-      resp.body.data.movies.map((movie) => {
-        movies.push({
-          title: movie.title_long,
-          magnet: magnetURI(movie.torrents[0].hash, movie.title_long),
-          image: movie.medium_cover_image
-        })
-      });
-
-      res.send(movies);
+      res.send(mapMovies(resp.body.data.movies));
     });
 
 })
@@ -51,20 +41,24 @@ app.get('/torrent-stream/:magnet?', function(req, res) {
         return;
       }
 
-      let movies = [];
-
-      resp.body.data.movies.map((movie) => {
-        movies.push({
-          title: movie.title_long,
-          magnet: magnetURI(movie.torrents[0].hash, movie.title_long),
-          image: movie.medium_cover_image
-        })
-      });
-
-      res.send(movies);
+      res.send(mapMovies(resp.body.data.movies));
     });
 
 })
+
+function mapMovies(movies) {
+  let m = [];
+
+  movies.map((movie) => {
+    m.push({
+      title: movie.title_long,
+      magnet: magnetURI(movie.torrents[0].hash, movie.title_long),
+      image: movie.medium_cover_image
+    })
+  });
+
+  return m;
+}
 
 app.all('/*', function(req, res, next) {
   res.header('Access-Control-Allow-Origin', 'http://localhost:8080')
