@@ -18,13 +18,18 @@ export default class Search extends React.Component {
     this.setState({ text: e.target.value })
   }
 
+  handleKeyDown(e) {
+    if(e.keyCode === 13) this._search();
+  }
+
   render() {
     return (
       <div>
         <input type="text"
               value={this.state.text}
               placeholder="search for a movie..."
-              onChange={this.handleChange.bind(this)}/>
+              onChange={this.handleChange.bind(this)}
+              onKeyDown={this.handleKeyDown.bind(this)} />
         <button onClick={this._search.bind(this)}>Search</button>
       </div>
     );
