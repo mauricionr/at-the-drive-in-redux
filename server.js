@@ -9,6 +9,8 @@ var request = require('superagent');
 app.use(express.static(__dirname + "/"));
 
 app.get('/torrent-stream/:magnet?', function(req, res) {
+  // TODO: handle stop/restart of playing stream if engine already running
+
   let engine = peerflix(req.query.magnet);
 
   engine.server.on('listening', () => {
