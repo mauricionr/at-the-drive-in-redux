@@ -26,11 +26,11 @@ export default class Search extends React.Component {
     return (
       <div>
         <input type="text"
+              className="search"
               value={this.state.text}
-              placeholder="search for a movie..."
+              placeholder="Search"
               onChange={this.handleChange.bind(this)}
               onKeyDown={this.handleKeyDown.bind(this)} />
-        <button onClick={this._search.bind(this)}>Search</button>
       </div>
     );
   }

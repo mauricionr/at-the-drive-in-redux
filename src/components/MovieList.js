@@ -16,11 +16,17 @@ let MovieList = React.createClass({
     let movies = [];
 
     this.props.movies.map((movie, i) => {
+
+      let divStyle = {
+        height: '345',
+        width: '230',
+        backgroundImage: 'url(' + movie.image + ')',
+      }
+
       movies.push(
-        <div className="movie" key={i}>
+        <div className="movie">
+          <div style={divStyle} onClick={() => this._playMovie(movie)} key={i}></div>
           <h4>{movie.title}</h4>
-          <img src={movie.image} />
-          <button onClick={() => this._playMovie(movie)}>Play</button>
         </div>
       )
     });
