@@ -2,7 +2,7 @@
 
 Streaming movie app using redux flux implementation
 
-If you like apps like Popcorn Time, you might like hacking on this :)
+![stream](/content/image/hackers.png)
 
 # Usage
 
