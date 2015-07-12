@@ -1,5 +1,5 @@
 import React from 'react';
-import { MovieList, Search } from './index';
+import { MovieList, Search, SearchNav } from './index';
 import MoviesAPI from '../utils/API';
 import prepareRoute from '../decorators/prepareRoute';
 import * as MoviesActionCreators from '../actions/movies';
@@ -9,7 +9,9 @@ import * as moviesActions from '../actions/movies';
 
 @prepareRoute(async ({ redux, params: { } }) => {
   return await * [
-    redux.dispatch(MoviesActionCreators.getMovies())
+    redux.dispatch(MoviesActionCreators.getMovies({
+      page: redux.getState().Movies.toJS().page
+    }))
   ];
 })
 @connect(({ Movies }) => ({ Movies }))
@@ -27,7 +29,9 @@ export default class Root {
     return (
       <div>
         <Search {...bindActionCreators(moviesActions, this.props.dispatch)} />
+        <SearchNav {...bindActionCreators(moviesActions, this.props.dispatch)} redux={this.props.route.redux} />
         <MovieList movies={movies} {...bindActionCreators(moviesActions, this.props.dispatch)} />
+        <SearchNav {...bindActionCreators(moviesActions, this.props.dispatch)} redux={this.props.route.redux} />
       </div>
     )
   }
