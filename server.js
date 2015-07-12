@@ -20,9 +20,12 @@ app.get('/torrent-stream/:magnet?', function(req, res) {
   })
 
 })
-.get('/movies', function(req, res) {
+.get('/movies/:page?', function(req, res) {
 
-  request("GET", "https://yts.to/api/v2/list_movies.json?limit=50")
+  var query = "https://yts.to/api/v2/list_movies.json?limit=18&sort_by=date_added&page=";
+  query += req.query.page;
+
+  request("GET", query)
     .end((err, resp) => {
 
       if(!resp) {
@@ -52,6 +55,9 @@ function mapMovies(movies) {
   let m = [];
 
   movies.map((movie) => {
+
+    console.log('yo', movie)
+
     m.push({
       title: movie.title_long,
       magnet: magnetURI(movie.torrents[0].hash, movie.title_long),
