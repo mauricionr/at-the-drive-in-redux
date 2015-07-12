@@ -29,7 +29,7 @@ const redux = createRedux(api, {});
 
 React.render(
   <Provider redux={redux}>
-    {() => <Router {...{ history }} createElement={AsyncProps.createElement} />}
+    {() => <Router {...{ history, redux }} createElement={AsyncProps.createElement} />}
   </Provider>,
   document.getElementById('app')
 )
