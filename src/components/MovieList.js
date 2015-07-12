@@ -24,7 +24,7 @@ let MovieList = React.createClass({
       }
 
       movies.push(
-        <div className="movie">
+        <div className="movie clearfix">
           <div style={divStyle} onClick={() => this._playMovie(movie)} key={i}></div>
           <h4>{movie.title}</h4>
         </div>
