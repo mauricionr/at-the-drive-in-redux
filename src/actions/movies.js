@@ -1,9 +1,15 @@
 import ActionTypes from '../consts/ActionTypes';
 
-export function getMovies() {
+export function getMovies(query) {
+
+  let page = query.motion ? query.page += query.motion : query.page;
+
   return async api => ({
     type: ActionTypes.Movies.getMovies,
-    res: await api(`/movies`)
+    res: {
+      movies: await api(`/movies?page=${query.page}`),
+      page: page
+    }
   });
 }
 
