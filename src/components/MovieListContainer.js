@@ -3,11 +3,14 @@ import { MovieList, Search, SearchNav } from './index';
 import MoviesAPI from '../utils/API';
 import prepareRoute from '../decorators/prepareRoute';
 import * as MoviesActionCreators from '../actions/movies';
-import { connect } from 'redux/react';
+import { connect } from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as moviesActions from '../actions/movies';
 
 @prepareRoute(async ({ redux, params: { } }) => {
+
+  console.log('yo!', redux)
+
   return await * [
     redux.dispatch(MoviesActionCreators.getMovies({
       page: redux.getState().Movies.toJS().page

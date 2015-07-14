@@ -33,8 +33,9 @@ System.config({
     "lodash": "npm:lodash@3.10.0",
     "qs": "npm:qs@4.0.0",
     "react": "npm:react@0.13.3",
+    "react-redux": "npm:react-redux@1.0.0-alpha",
     "react-router": "npm:react-router@1.0.0-beta2",
-    "redux": "npm:redux@0.12.0",
+    "redux": "npm:redux@1.0.0-rc",
     "superagent": "npm:superagent@1.2.0",
     "url": "github:jspm/nodelibs-url@0.1.0",
     "github:jspm/nodelibs-assert@0.1.0": {
@@ -113,7 +114,7 @@ System.config({
       "mime-types": "npm:mime-types@2.1.2",
       "negotiator": "npm:negotiator@0.5.3"
     },
-    "npm:amdefine@0.1.1": {
+    "npm:amdefine@1.0.0": {
       "fs": "github:jspm/nodelibs-fs@0.1.2",
       "module": "github:jspm/nodelibs-module@0.1.0",
       "path": "github:jspm/nodelibs-path@0.1.0",
@@ -476,6 +477,12 @@ System.config({
       "crypto": "github:jspm/nodelibs-crypto@0.1.0",
       "process": "github:jspm/nodelibs-process@0.1.1"
     },
+    "npm:react-redux@1.0.0-alpha": {
+      "invariant": "npm:invariant@2.1.0",
+      "process": "github:jspm/nodelibs-process@0.1.1",
+      "react": "npm:react@0.13.3",
+      "redux": "npm:redux@1.0.0-rc"
+    },
     "npm:react-router@1.0.0-beta2": {
       "invariant": "npm:invariant@2.1.0",
       "keymirror": "npm:keymirror@0.1.1",
@@ -498,7 +505,7 @@ System.config({
       "stream": "github:jspm/nodelibs-stream@0.1.0",
       "string_decoder": "npm:string_decoder@0.10.31"
     },
-    "npm:redux@0.12.0": {
+    "npm:redux@1.0.0-rc": {
       "invariant": "npm:invariant@2.1.0",
       "process": "github:jspm/nodelibs-process@0.1.1"
     },
@@ -540,7 +547,7 @@ System.config({
       "process": "github:jspm/nodelibs-process@0.1.1"
     },
     "npm:source-map@0.1.31": {
-      "amdefine": "npm:amdefine@0.1.1",
+      "amdefine": "npm:amdefine@1.0.0",
       "fs": "github:jspm/nodelibs-fs@0.1.2",
       "path": "github:jspm/nodelibs-path@0.1.0",
       "process": "github:jspm/nodelibs-process@0.1.1"

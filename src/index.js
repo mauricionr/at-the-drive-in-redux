@@ -1,5 +1,5 @@
 import React from 'react'
-import { Provider } from 'redux/react';
+import { Provider } from 'react-redux';
 import createRedux from './lib/createRedux';
 import request from 'superagent';
 import qs from 'qs';
@@ -29,7 +29,7 @@ const redux = createRedux(api, {});
 
 React.render(
   <Provider redux={redux}>
-    {() => <Router {...{ history, redux }} createElement={AsyncProps.createElement} />}
+    {() => <Router {...{ history, redux }} />}
   </Provider>,
   document.getElementById('app')
 )

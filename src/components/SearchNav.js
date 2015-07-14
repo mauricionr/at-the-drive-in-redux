@@ -4,6 +4,8 @@ export default class SearchNav extends React.Component {
 
   constructor(props, context) {
     super(props, context);
+
+    console.log('oh no', this.props)
   }
 
   _next() {

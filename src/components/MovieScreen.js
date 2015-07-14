@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
-import { connect } from 'redux/react';
+import { connect } from 'react-redux';
 
 @connect(({ Movies }) => ({ Movies }))
 export default class MovieScreen extends React.Component {
