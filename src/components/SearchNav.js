@@ -10,14 +10,14 @@ export default class SearchNav extends React.Component {
 
   _next() {
     this.props.getMovies({
-      page: this.props.redux.getState().Movies.toJS().page,
+      page: this.props.store.getState().Movies.toJS().page,
       motion: 1
     })
   }
 
   _last() {
     this.props.getMovies({
-      page: this.props.redux.getState().Movies.toJS().page,
+      page: this.props.store.getState().Movies.toJS().page,
       motion: -1
     })
   }

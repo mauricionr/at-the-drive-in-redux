@@ -25,11 +25,11 @@ const api = createAPI(
 );
 
 /* global __INITIAL_STATE__:true */
-const redux = createRedux(api, {});
+const store = createRedux(api, {});
 
 React.render(
-  <Provider redux={redux}>
-    {() => <Router {...{ history, redux }} />}
+  <Provider {...{store}}>
+    {() => <Router {...{ history, store }} />}
   </Provider>,
   document.getElementById('app')
 )
