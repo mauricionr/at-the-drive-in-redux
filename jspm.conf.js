@@ -33,7 +33,7 @@ System.config({
     "lodash": "npm:lodash@3.10.0",
     "qs": "npm:qs@4.0.0",
     "react": "npm:react@0.13.3",
-    "react-redux": "npm:react-redux@1.0.0-alpha",
+    "react-redux": "npm:react-redux@0.2.2",
     "react-router": "npm:react-router@1.0.0-beta2",
     "redux": "npm:redux@1.0.0-rc",
     "superagent": "npm:superagent@1.2.0",
@@ -477,10 +477,9 @@ System.config({
       "crypto": "github:jspm/nodelibs-crypto@0.1.0",
       "process": "github:jspm/nodelibs-process@0.1.1"
     },
-    "npm:react-redux@1.0.0-alpha": {
+    "npm:react-redux@0.2.2": {
       "invariant": "npm:invariant@2.1.0",
       "process": "github:jspm/nodelibs-process@0.1.1",
-      "react": "npm:react@0.13.3",
       "redux": "npm:redux@1.0.0-rc"
     },
     "npm:react-router@1.0.0-beta2": {
