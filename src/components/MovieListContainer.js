@@ -8,9 +8,6 @@ import {bindActionCreators} from 'redux';
 import * as moviesActions from '../actions/movies';
 
 @prepareRoute(async ({ store, params: { } }) => {
-
-  console.log('yo!', store)
-
   return await * [
     store.dispatch(MoviesActionCreators.getMovies({
       page: store.getState().Movies.toJS().page

@@ -55,9 +55,6 @@ function mapMovies(movies) {
   let m = [];
 
   movies.map((movie) => {
-
-    console.log('yo', movie)
-
     m.push({
       title: movie.title_long,
       magnet: magnetURI(movie.torrents[0].hash, movie.title_long),
