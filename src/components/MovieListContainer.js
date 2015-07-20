@@ -27,7 +27,7 @@ export default class Root {
     const movies = Movies.get(`movies`).toJS();
 
     return (
-      <div>
+      <div className="jumbotron">
         <Search {...bindActionCreators(moviesActions, this.props.dispatch)} />
         <SearchNav {...bindActionCreators(moviesActions, this.props.dispatch)} store={this.props.route.store} />
         <MovieList movies={movies} {...bindActionCreators(moviesActions, this.props.dispatch)} />
