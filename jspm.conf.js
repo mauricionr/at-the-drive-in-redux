@@ -33,6 +33,7 @@ System.config({
     "lodash": "npm:lodash@3.10.0",
     "qs": "npm:qs@4.0.0",
     "react": "npm:react@0.13.3",
+    "react-bootstrap": "npm:react-bootstrap@0.23.7",
     "react-redux": "npm:react-redux@0.2.2",
     "react-router": "npm:react-router@1.0.0-beta2",
     "redux": "npm:redux@1.0.0-rc",
@@ -182,6 +183,11 @@ System.config({
       "base64-js": "npm:base64-js@0.0.8",
       "ieee754": "npm:ieee754@1.1.6",
       "is-array": "npm:is-array@1.0.1"
+    },
+    "npm:classnames@2.1.3": {
+      "assert": "github:jspm/nodelibs-assert@0.1.0",
+      "process": "github:jspm/nodelibs-process@0.1.1",
+      "systemjs-json": "github:systemjs/plugin-json@0.1.0"
     },
     "npm:combined-stream@0.0.7": {
       "buffer": "github:jspm/nodelibs-buffer@0.1.0",
@@ -476,6 +482,11 @@ System.config({
       "buffer": "github:jspm/nodelibs-buffer@0.1.0",
       "crypto": "github:jspm/nodelibs-crypto@0.1.0",
       "process": "github:jspm/nodelibs-process@0.1.1"
+    },
+    "npm:react-bootstrap@0.23.7": {
+      "classnames": "npm:classnames@2.1.3",
+      "process": "github:jspm/nodelibs-process@0.1.1",
+      "react": "npm:react@0.13.3"
     },
     "npm:react-redux@0.2.2": {
       "invariant": "npm:invariant@2.1.0",
