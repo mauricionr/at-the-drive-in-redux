@@ -10,7 +10,8 @@ export function getMovies(query) {
     type: ActionTypes.Movies.getMovies,
     res: {
       movies: await api(`/movies${page}${genre}`),
-      page: page
+      page: page,
+      genre: genre
     }
   });
 }
