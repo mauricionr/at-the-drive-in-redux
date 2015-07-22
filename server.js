@@ -20,12 +20,15 @@ app.get('/torrent-stream/:magnet?', function(req, res) {
   })
 
 })
-.get('/movies/:page?:query?:genre?', function(req, res) {
+.get('/movies/:page?:query?:genre?:sort?', function(req, res) {
 
-  var query = "https://yts.to/api/v2/list_movies.json?limit=18&sort_by=date_added&page=";
+  var query = "https://yts.to/api/v2/list_movies.json?limit=18&page=";
   query += req.query.page;
 
   if(req.query.genre) query = [query, "&genre=", req.query.genre].join('');
+
+  if(req.query.sort) query = [query, "&sort_by=", req.query.sort].join('');
+  else query = [query, "&sort_by=date_added"].join('');
 
   request("GET", query)
     .end((err, resp) => {
