@@ -3,9 +3,7 @@ import ActionTypes from '../consts/ActionTypes';
 export function getMovies(query) {
 
   let page = query.motion ? `?page=${query.page += query.motion}` : `?page=${query.page}`;
-
   let genre = query.genre ? `&genre=${query.genre}` : ``;
-
   let sort = query.sort ? `&sort=${query.sort}` : ``;
 
   return async api => ({
