@@ -11,6 +11,10 @@ export default class Header {
     this.props.getMovies({ page: 1, genre: genre });
   }
 
+  selectHighestRated() {
+    this.props.getMovies({ page: 1, sort: 'rating' })
+  }
+
   menuItems() {
     var genres = ['action', 'adventure', 'animation', 'biography', 'comedy', 'crime',
                   'documentary', 'drama', 'family', 'fantasy', 'film-noir', 'history',
@@ -28,9 +32,11 @@ export default class Header {
     return (
       <Navbar brand='At the Drive-In' inverse toggleNavKey={0}>
         <Nav right eventKey={0}> {/* This is the eventKey referenced */}
-          <DropdownButton eventKey={3} title='Genres'>
+          <NavItem eventKey={1} onClick={this.selectHighestRated.bind(this)} href='#'>Highest Rated</NavItem>
+          <DropdownButton eventKey={2} title='Genres'>
             {this.menuItems()}
           </DropdownButton>
+
         </Nav>
       </Navbar>
     );
