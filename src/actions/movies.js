@@ -6,10 +6,12 @@ export function getMovies(query) {
 
   let genre = query.genre ? `&genre=${query.genre}` : ``;
 
+  let sort = query.sort ? `&sort=${query.sort}` : ``;
+
   return async api => ({
     type: ActionTypes.Movies.getMovies,
     res: {
-      movies: await api(`/movies${page}${genre}`),
+      movies: await api(`/movies${page}${genre}${sort}`),
       page: page,
       genre: genre
     }
