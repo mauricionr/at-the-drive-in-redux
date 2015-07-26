@@ -18,7 +18,7 @@ make dev
 
 # TODO
 
-- [ ] cleanup peerflix server if already running
+- [X] cleanup peerflix server if already running
 - [X] fix paging
 
 # Thanks

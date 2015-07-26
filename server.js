@@ -8,17 +8,26 @@ var request = require('superagent');
 
 app.use(express.static(__dirname + "/"));
 
-app.get('/torrent-stream/:magnet?', function(req, res) {
-  // TODO: handle stop/restart of playing stream if engine already running
+var engine;
 
-  let engine = peerflix(req.query.magnet);
-
+function getStreamUrl(engine, res) {
   engine.server.on('listening', () => {
     let myLink = 'http://localhost:' + engine.server.address().port + '/';
 
     res.send({ address: myLink });
   })
+}
 
+app.get('/torrent-stream/:magnet?', function(req, res) {
+  if(engine) {
+    engine.destroy(function() {
+      engine = peerflix(req.query.magnet);
+      getStreamUrl(engine, res);
+    })
+  } else {
+    engine = peerflix(req.query.magnet);
+    getStreamUrl(engine, res);
+  }
 })
 .get('/movies/:page?:query?:genre?:sort?', function(req, res) {
 
