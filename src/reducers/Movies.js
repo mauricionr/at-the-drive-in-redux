@@ -2,13 +2,22 @@ import Immutable from 'immutable';
 import ActionTypes from '../consts/ActionTypes';
 import createReducer from '../lib/createReducer';
 
-const initialState = Immutable.fromJS({page: 1, movies: [], currStream: ''});
+const initialState = Immutable.fromJS({page: 1, movies: [], currStream: '', filtering: {}});
 
 export default createReducer(initialState, {
   [ActionTypes.Movies.getMovies](state, { res }) {
     return state.merge({
       [`movies`]: res.movies,
-      [`page`]: res.page
+      [`page`]: res.page,
+      [`filtering`]: res.filtering
+    });
+  },
+
+  [ActionTypes.Movies.getMovies](state, { res }) {
+    return state.merge({
+      [`movies`]: res.movies,
+      [`page`]: res.page,
+      [`filtering`]: res.filtering
     });
   },
 
@@ -20,7 +29,8 @@ export default createReducer(initialState, {
 
   [ActionTypes.Movies.searchMovie](state, { res }) {
     return state.merge({
-      [`movies`]: res
+      [`movies`]: res.movies,
+      [`page`]: res.page
     });
   }
 
