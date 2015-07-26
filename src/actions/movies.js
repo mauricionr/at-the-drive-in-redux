@@ -1,38 +1,22 @@
 import ActionTypes from '../consts/ActionTypes';
 
 export function getMovies(query) {
+
+  let pageNum;
+
+  if((query.page === 1 && query.motion === -1) || !query.motion)
+    pageNum = 1;
+  else
+    pageNum = query.page += query.motion;
+
+  let pageQuery = `page=${pageNum}`;
   let genre = query.genre ? `&genre=${query.genre}` : ``;
   let sort = query.sort ? `&sort=${query.sort}` : ``;
 
   return async api => ({
     type: ActionTypes.Movies.getMovies,
     res: {
-      movies: await api(`/movies?page=1${genre}${sort}`),
-      page: 1,
-      filtering: {
-        sort: {
-          on: sort !== ``,
-          value: query.sort
-        },
-        genre: {
-          on: genre !== ``,
-          value: query.genre
-        }
-      }
-    }
-  });
-}
-
-export function getMoreMovies(query) {
-  let pageNum = query.page += query.motion;
-  let pageQuery = `?page=${pageNum}`;
-  let genre = query.genre ? `&genre=${query.genre}` : ``;
-  let sort = query.sort ? `&sort=${query.sort}` : ``;
-
-  return async api => ({
-    type: ActionTypes.Movies.getMovies,
-    res: {
-      movies: await api(`/movies${pageQuery}${genre}${sort}`),
+      movies: await api(`/movies?${pageQuery}${genre}${sort}`),
       page: pageNum,
       filtering: {
         sort: {

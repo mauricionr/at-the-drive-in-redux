@@ -7,7 +7,7 @@ export default class SearchNav extends React.Component {
   }
 
   _next() {
-    this.props.getMoreMovies({
+    this.props.getMovies({
       page: this.props.store.getState().Movies.toJS().page,
       motion: 1,
       genre: (this.props.store.getState().Movies.toJS().filtering.genre.on) ? this.props.store.getState().Movies.toJS().filtering.genre.value : undefined,
@@ -16,7 +16,7 @@ export default class SearchNav extends React.Component {
   }
 
   _last() {
-    this.props.getMoreMovies({
+    this.props.getMovies({
       page: this.props.store.getState().Movies.toJS().page,
       motion: -1,
       genre: (this.props.store.getState().Movies.toJS().filtering.genre.on) ? this.props.store.getState().Movies.toJS().filtering.genre.value : undefined,

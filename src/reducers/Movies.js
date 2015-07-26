@@ -13,14 +13,6 @@ export default createReducer(initialState, {
     });
   },
 
-  [ActionTypes.Movies.getMovies](state, { res }) {
-    return state.merge({
-      [`movies`]: res.movies,
-      [`page`]: res.page,
-      [`filtering`]: res.filtering
-    });
-  },
-
   [ActionTypes.Movies.watchMovie](state, { res }) {
     return state.merge({
       [`currStream`]: res.address
