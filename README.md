@@ -20,6 +20,7 @@ make dev
 
 - [X] cleanup peerflix server if already running
 - [X] fix paging
+- [ ] support tv shows
 
 # Thanks
 
