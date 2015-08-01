@@ -6,6 +6,7 @@ import * as MoviesActionCreators from '../actions/movies';
 import { connect } from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as moviesActions from '../actions/movies';
+import * as showsActions from '../actions/shows';
 
 @prepareRoute(async ({ store, params: { } }) => {
   return await * [
@@ -28,10 +29,10 @@ export default class Root {
 
     return (
       <div className="jumbotron">
-        <Search {...bindActionCreators(moviesActions, this.props.dispatch)} />
-        <SearchNav {...bindActionCreators(moviesActions, this.props.dispatch)} store={this.props.route.store} />
-        <MovieList movies={movies} {...bindActionCreators(moviesActions, this.props.dispatch)} />
-        <SearchNav {...bindActionCreators(moviesActions, this.props.dispatch)} store={this.props.route.store} />
+        <Search {...bindActionCreators({ ...moviesActions, ...showsActions }, this.props.dispatch)} />
+        <SearchNav {...bindActionCreators({ ...moviesActions, ...showsActions }, this.props.dispatch)} store={this.props.route.store} />
+        <MovieList movies={movies} {...bindActionCreators({ ...moviesActions, ...showsActions }, this.props.dispatch)} />
+        <SearchNav {...bindActionCreators({ ...moviesActions, ...showsActions }, this.props.dispatch)} store={this.props.route.store} />
       </div>
     )
   }
