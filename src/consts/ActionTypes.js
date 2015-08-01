@@ -5,5 +5,9 @@ export default {
     getMovies: null,
     searchMovie: null,
     watchMovie: null
+  }),
+
+  Shows: keyMirror({
+    getShows: null
   })
 };
