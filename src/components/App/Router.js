@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { Router, Route } from 'react-router';
-import { Application, MovieListContainer, MovieScreen } from './index';
+import { Application, MovieListContainer, ShowListContainer, MovieScreen } from '../index';
 
 class AppRouter extends React.Component {
 
@@ -16,6 +16,7 @@ class AppRouter extends React.Component {
         <Route component={Application}>
           <Route path="/" component={MovieListContainer} {...this.props} />
           <Route path="/screen" component={MovieScreen} />
+          <Route path="/shows" component={ShowListContainer} {...this.props} />
         </Route>
       </Router>
     );

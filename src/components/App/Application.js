@@ -1,9 +1,9 @@
 import React from 'react';
-import { Header } from './index';
+import { Header } from '../index';
 import { connect } from 'react-redux';
 import {bindActionCreators} from 'redux';
-import * as moviesActions from '../actions/movies';
-import * as showsActions from '../actions/shows';
+import * as moviesActions from '../../actions/movies';
+import * as showsActions from '../../actions/shows';
 
 @connect(({ }) => ({ }))
 class Application extends React.Component {

@@ -1,9 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router';
-import { Search } from './index';
+import { Search } from '../index';
 import { Nav, Navbar, NavItem, DropdownButton, MenuItem } from 'react-bootstrap';
 import {bindActionCreators} from 'redux';
-import * as moviesActions from '../actions/movies';
+import * as moviesActions from '../../actions/movies';
 
 export default class Header {
 
@@ -36,7 +36,8 @@ export default class Header {
     return (
       <Navbar brand='At the Drive-In' inverse toggleNavKey={0}>
         <Nav right eventKey={0}> {/* This is the eventKey referenced */}
-          <NavItem eventKey={1} onClick={this.selectTVShows.bind(this)} href='#'>TV Shows</NavItem>
+          <li><Link to="/">Movies</Link></li>
+          <li><Link to="/shows">TV Shows</Link></li>
           <NavItem eventKey={1} onClick={this.selectHighestRated.bind(this)} href='#'>Highest Rated</NavItem>
           <DropdownButton eventKey={2} title='Genres'>
             {this.menuItems()}

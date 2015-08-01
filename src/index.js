@@ -5,7 +5,7 @@ import request from 'superagent';
 import qs from 'qs';
 import createAPI from './lib/createAPI';
 import BrowserHistory from 'react-router/lib/BrowserHistory';
-import Router from './components/Router';
+import { Router } from './components/index';
 import urls from '../config/client';
 import AsyncProps from 'react-router/lib/experimental/AsyncProps';
 

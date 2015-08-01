@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 import { Navigation } from 'react-router';
-import { Loader } from './index';
+import { Loader } from '../index';
 
 let MovieList = React.createClass({
 
