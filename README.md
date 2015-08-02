@@ -21,7 +21,7 @@ make dev
 - [X] cleanup peerflix server if already running
 - [X] fix paging
 - [ ] support tv shows
-
+- [X] switch back to webpack or pre-bundle with systemjs
 # Thanks
 
 Thank you [Dan Abramov](https://twitter.com/dan_abramov) for the inspiration and for creating [redux](https://github.com/gaearon/redux)!

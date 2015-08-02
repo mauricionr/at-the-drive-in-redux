@@ -1,12 +1,25 @@
 var express = require('express')
 var app = express();
 var http = require('http');
-var socketio = require('socket.io');
 var exec = require('child_process').exec;
 var peerflix = require('peerflix');
 var request = require('superagent');
 
+var webpack = require('webpack');
+var WebpackDevServer = require('webpack-dev-server');
+var config = require('./webpack.config');
+
 app.use(express.static(__dirname + "/"));
+
+app.all('/*', function(req, res, next) {
+  res.header('Access-Control-Allow-Origin', 'http://localhost:3000')
+  res.header('Access-Control-Allow-Headers', 'X-Requested-With')
+  next()
+});
+
+app.listen(8080, () => {
+  console.log('express server listening on port 8080');
+});
 
 var engine;
 
@@ -64,6 +77,36 @@ app.get('/torrent-stream/:magnet?', function(req, res) {
     });
 
 })
+.get('/shows/', (req, res) => {
+
+  request("GET", "http://eztvapi.re/shows/1")
+    .end((err, resp) => {
+
+      if(!resp) {
+        res.send([]);
+        return;
+      }
+
+      res.send(resp);
+
+    });
+
+})
+.get('/show/:id?', (req, res) => {
+
+  request("GET", "http://eztvapi.re/show/" + req.query.id)
+    .end((err, resp) => {
+
+      if(!resp) {
+        res.send([]);
+        return;
+      }
+
+      res.send(resp);
+
+    });
+
+})
 
 function mapMovies(movies) {
   let m = [];
@@ -79,22 +122,11 @@ function mapMovies(movies) {
   return m;
 }
 
-app.all('/*', function(req, res, next) {
-  res.header('Access-Control-Allow-Origin', 'http://localhost:8080')
-  res.header('Access-Control-Allow-Headers', 'X-Requested-With')
-  res.header('Access-Control-Allow-Credentials', 'true')
-  next()
-});
-
-let server = http.createServer(app).listen(8080, () => {
-  console.log('express server listening on port 8080');
-});
-
-let io = socketio.listen(server);
-
-io.on('connection', (socket) => {
-  console.log('socket connection established on server')
-});
+// let io = socketio.listen(server);
+//
+// io.on('connection', (socket) => {
+//   console.log('socket connection established on server')
+// });
 
 function magnetURI(hash, title) {
 
@@ -111,3 +143,18 @@ function magnetURI(hash, title) {
 
   return `magnet:?xt=urn:btih:${hash}&dn=${encodeURIComponent(title)}&tr=${trackers.join('&tr=')}`;
 }
+
+new WebpackDevServer(webpack(config), {
+  publicPath: config.output.publicPath,
+  hot: true,
+  historyApiFallback: true,
+  stats: {
+    colors: true
+  }
+}).listen(3000, 'localhost', function (err) {
+  if (err) {
+    console.log(err);
+  }
+
+  console.log('Listening at localhost:3000');
+});
