@@ -20,7 +20,7 @@ make dev
 
 - [X] cleanup peerflix server if already running
 - [X] fix paging
-- [ ] support tv shows
+- [X] support tv shows
 - [X] switch back to webpack or pre-bundle with systemjs
 # Thanks
 
