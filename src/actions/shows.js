@@ -8,3 +8,17 @@ export function getShows() {
     }
   });
 }
+
+export function getShow(id) {
+  return async api => ({
+    type: ActionTypes.Shows.getShow,
+    res: await api(`/show?id=${id}`)
+  });
+}
+
+export function watchShow(magnet) {
+  return async api => ({
+    type: ActionTypes.Stream.watch,
+    res: await api(`/torrent-stream?magnet=${magnet}`)
+  });
+}

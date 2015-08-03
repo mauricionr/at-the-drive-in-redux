@@ -34,7 +34,7 @@ export function getMovies(query) {
 
 export function watchMovie(magnet) {
   return async api => ({
-    type: ActionTypes.Movies.watchMovie,
+    type: ActionTypes.Stream.watch,
     res: await api(`/torrent-stream?magnet=${magnet}`)
   })
 }
