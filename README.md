@@ -16,6 +16,8 @@ To just run app:
 make dev
 ```
 
+open your browser to http://localhost:3000
+
 # TODO
 
 - [X] cleanup peerflix server if already running
