@@ -8,6 +8,12 @@ export default {
   }),
 
   Shows: keyMirror({
-    getShows: null
+    getShows: null,
+    getShow: null,
+    watchShow: null
+  }),
+
+  Stream: keyMirror({
+    watch: null
   })
 };
