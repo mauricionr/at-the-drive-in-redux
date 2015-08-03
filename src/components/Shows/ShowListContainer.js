@@ -1,10 +1,11 @@
 import React from 'react';
-import { MovieList, Search, SearchNav } from '../index';
-import MoviesAPI from '../../utils/API';
+import { ShowsList } from '../index';
 import prepareRoute from '../../decorators/prepareRoute';
 import * as ShowsActionCreators from '../../actions/shows';
 import { connect } from 'react-redux';
 import {bindActionCreators} from 'redux';
+import * as showsActions from '../../actions/shows';
+import { Loader } from '../index';
 
 @prepareRoute(async ({ store, params: { } }) => {
   return await * [
@@ -22,11 +23,15 @@ export default class ShowsListContainer {
     } = this;
 
     const shows = Shows.get(`shows`).toJS();
+    var view;
 
-    return (
-      <div className="jumbotron">
-      </div>
-    )
+    if(shows && shows.length > 0) {
+      view = <ShowsList shows={shows} {...bindActionCreators(showsActions, this.props.dispatch)} />;
+    } else {
+      view = <Loader />;
+    }
+
+    return view;
   }
 
 }
