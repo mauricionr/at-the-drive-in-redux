@@ -7,14 +7,41 @@ body {
 .movie {
   margin: 20px;
   height: auto;
+  max-width: 225px;
+  height: 450px;
 }
 
 .movie:hover {
   cursor: pointer;
 }
 
-.movie h4 {
-  color: #101010;
+.movie .title {
+  padding: 9px;
+  margin: 0;
+  width: 230px;
+  font-weight: bolder;
+  border-bottom: 1px solid darkslategray;
+}
+
+.movie p {
+  color: darkslategray;
+  background-color: ivory;
+}
+
+.movie .row {
+  margin: 0;
+}
+
+.movie .row.btm-row {
+  width: 230px;
+}
+
+.movie p.btm-title {
+  padding: 9px;
+}
+
+.movie p.btm-title.divider {
+  border-right: 1px solid darkslategray;
 }
 
 .movie .info {
@@ -67,13 +94,12 @@ video {
 }
 
 .btn-back {
-  color: white;
-  font-size: 80px;
+  color: #9d9d9d;
+  font-size: 40px;
   text-decoration: none;
-  position: absolute;
   top: 0;
-  right: 0;
   margin: 30px 30px 0 0;
+  float:right;
 }
 
 .movie-list {
@@ -85,6 +111,40 @@ video {
 
 .movie-list .movie {
   float: left;
+}
+
+.show-details {
+  position: relative;
+}
+
+.show-details .show-details-title {
+  padding: 5px 0 0 50px;
+}
+
+.show-details .show-details-title h1 {
+  color: white;
+  font-size: 60px;
+}
+
+.show-details .show-details-synopsis {
+  font-family: monospace;
+  color: white;
+}
+
+ul.show-details-show-list {
+  height: 200px;
+  max-width: 1170px;
+}
+
+ul.show-details-show-list li {
+  list-style-type: none;
+  color: white;
+  font-family: monospace;
+  cursor: pointer;
+  float: left;
+  margin: 20px;
+  width: 100px;
+  height: 50px;
 }
 
 .circles {
@@ -123,6 +183,10 @@ video {
   border: 5px dashed aqua;
   transform: rotateZ(0deg);
   animation: spinZ 1s infinite ease-in-out;
+}
+
+.wave div {
+  color: orange;
 }
 
 @keyframes spinY {
