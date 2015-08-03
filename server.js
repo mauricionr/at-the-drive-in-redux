@@ -34,11 +34,11 @@ function getStreamUrl(engine, res) {
 app.get('/torrent-stream/:magnet?', function(req, res) {
   if(engine) {
     engine.destroy(function() {
-      engine = peerflix(req.query.magnet);
+      engine = peerflix(req.query.magnet, { trackers: req.query.tr });
       getStreamUrl(engine, res);
     })
   } else {
-    engine = peerflix(req.query.magnet);
+    engine = peerflix(req.query.magnet, { trackers: req.query.tr });
     getStreamUrl(engine, res);
   }
 })
@@ -62,7 +62,6 @@ app.get('/torrent-stream/:magnet?', function(req, res) {
 
       res.send(mapMovies(resp.body.data.movies));
     });
-
 })
 .get('/search/:movie?', (req, res) => {
   request("GET", "https://yts.to/api/v2/list_movies.json?query_term=" + req.query.movie)
@@ -75,7 +74,6 @@ app.get('/torrent-stream/:magnet?', function(req, res) {
 
       res.send(mapMovies(resp.body.data.movies));
     });
-
 })
 .get('/shows/', (req, res) => {
 
@@ -88,9 +86,7 @@ app.get('/torrent-stream/:magnet?', function(req, res) {
       }
 
       res.send(resp);
-
     });
-
 })
 .get('/show/:id?', (req, res) => {
 
@@ -103,9 +99,7 @@ app.get('/torrent-stream/:magnet?', function(req, res) {
       }
 
       res.send(resp);
-
     });
-
 })
 
 function mapMovies(movies) {
@@ -115,18 +109,14 @@ function mapMovies(movies) {
     m.push({
       title: movie.title_long,
       magnet: magnetURI(movie.torrents[0].hash, movie.title_long),
-      image: movie.medium_cover_image
+      image: movie.medium_cover_image,
+      rating: movie.rating,
+      genre: movie.genres[0]
     })
   });
 
   return m;
 }
-
-// let io = socketio.listen(server);
-//
-// io.on('connection', (socket) => {
-//   console.log('socket connection established on server')
-// });
 
 function magnetURI(hash, title) {
 
@@ -156,5 +146,5 @@ new WebpackDevServer(webpack(config), {
     console.log(err);
   }
 
-  console.log('Listening at localhost:3000');
+  console.log('webpack is listening on port 3000');
 });
