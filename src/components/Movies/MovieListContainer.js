@@ -1,11 +1,11 @@
 import React from 'react';
 import { MovieList, Search, SearchNav } from '../index';
-import MoviesAPI from '../../utils/API';
 import prepareRoute from '../../decorators/prepareRoute';
 import * as MoviesActionCreators from '../../actions/movies';
 import { connect } from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as moviesActions from '../../actions/movies';
+import { Loader } from '../index';
 
 @prepareRoute(async ({ store, params: { } }) => {
   return await * [
@@ -25,15 +25,20 @@ export default class Root {
     } = this;
 
     const movies = Movies.get(`movies`).toJS();
+    var view;
 
-    return (
-      <div className="jumbotron">
-        <Search {...bindActionCreators( ...moviesActions, this.props.dispatch)} />
-        <SearchNav {...bindActionCreators( ...moviesActions, this.props.dispatch)} store={this.props.route.store} />
-        <MovieList movies={movies} {...bindActionCreators( ...moviesActions, this.props.dispatch)} />
-        <SearchNav {...bindActionCreators( ...moviesActions, this.props.dispatch)} store={this.props.route.store} />
+    if(movies && movies.length > 0) {
+      view = <div>
+        <Search {...bindActionCreators(moviesActions, this.props.dispatch)} />
+        <SearchNav {...bindActionCreators(moviesActions, this.props.dispatch)} store={this.props.route.store} />
+        <MovieList movies={movies} {...bindActionCreators(moviesActions, this.props.dispatch)} />
+        <SearchNav {...bindActionCreators(moviesActions, this.props.dispatch)} store={this.props.route.store} />
       </div>
-    )
+    } else {
+      view = <Loader />
+    }
+
+    return view;
   }
 
 }

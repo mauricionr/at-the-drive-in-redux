@@ -1,6 +1,5 @@
 import React, { PropTypes } from 'react';
 import { Navigation } from 'react-router';
-import { Loader } from '../index';
 
 let MovieList = React.createClass({
 
@@ -26,7 +25,11 @@ let MovieList = React.createClass({
       movies.push(
         <div className="movie clearfix" key={i}>
           <div style={divStyle} onClick={() => this._playMovie(movie)}></div>
-          <h4>{movie.title}</h4>
+          <p className="title">{movie.title}</p>
+          <div className="row btm-row">
+            <p className="col-xs-6 btm-title divider">{movie.rating}</p>
+            <p className="col-xs-6 btm-title">{movie.genre}</p>
+          </div>
         </div>
       )
     });
@@ -37,7 +40,7 @@ let MovieList = React.createClass({
   render() {
     return (
       <div className="movie-list">
-        {this.props.movies.length ? this._renderMovies(): <Loader />}
+        {this._renderMovies()}
       </div>
     );
   }
