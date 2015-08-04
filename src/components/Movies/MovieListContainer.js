@@ -8,11 +8,15 @@ import * as moviesActions from '../../actions/movies';
 import { Loader } from '../index';
 
 @prepareRoute(async ({ store, params: { } }) => {
-  return await * [
-    store.dispatch(MoviesActionCreators.getMovies({
-      page: store.getState().Movies.toJS().page
-    }))
-  ];
+  if(!store.getState().Movies.toJS().movies.length) {
+      return await * [
+        store.dispatch(MoviesActionCreators.getMovies({
+          page: store.getState().Movies.toJS().page
+        }))
+      ];
+  } else {
+    return;
+  }
 })
 @connect(({ Movies }) => ({ Movies }))
 export default class Root {

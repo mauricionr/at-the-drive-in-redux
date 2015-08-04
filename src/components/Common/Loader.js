@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default class MovieScreen {
+export default class Loader {
 
   render() {
     return (

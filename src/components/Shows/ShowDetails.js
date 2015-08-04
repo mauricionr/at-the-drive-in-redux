@@ -1,8 +1,7 @@
 import React, { PropTypes, Component } from 'react';
 import { connect } from 'react-redux';
 import { Loader } from '../index';
-import {bindActionCreators} from 'redux';
-import * as showsActions from '../../actions/shows';
+import { watchShow } from '../../actions/shows';
 
 @connect(({ Shows }) => ({ Shows }))
 export default class ShowDetails extends React.Component {
@@ -13,7 +12,6 @@ export default class ShowDetails extends React.Component {
 
   constructor(props, context) {
     super(props, context)
-    this.actions = bindActionCreators(showsActions, this.props.dispatch);
     this.context = context;
   }
 
@@ -28,7 +26,7 @@ export default class ShowDetails extends React.Component {
   }
 
   _selectEpisode(ep) {
-    this.actions.watchShow(ep.torrents[0].url)
+    this.props.dispatch(watchShow(ep.torrents[0].url))
     this.context.router.transitionTo(`/screen`);
   }
 
