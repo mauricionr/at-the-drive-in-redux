@@ -1,41 +1,48 @@
 import React, { Component, PropTypes } from 'react';
 import { Search } from '../index';
-import { Nav, Navbar, NavItem, DropdownButton, MenuItem } from 'react-bootstrap';
+import { Nav, Navbar, NavDropdown, Button, MenuItem } from 'react-bootstrap';
 import {bindActionCreators} from 'redux';
 import * as moviesActions from '../../actions/movies';
+import { pushState } from 'redux-router';
 
 export default class Header extends Component {
 
-  static contextTypes = {
-    router: PropTypes.func.isRequired
-  };
-
-  constructor(props, context) {
-    super(props, context);
+  constructor(props) {
+    super(props);
   }
 
   onSelectGenre(genre) {
     this.props.getMovies({ page: 1, genre: genre });
-    this.context.router.transitionTo(`/`);
+    this.props.dispatch(
+      pushState(null, '/')
+    );
   }
 
   onSelectHighestRated() {
     this.props.getMovies({ page: 1, sort: 'rating' })
-    this.context.router.transitionTo(`/`);
+    this.props.dispatch(
+      pushState(null, '/')
+    );
   }
 
   onSelectTVShows() {
     this.props.getShows();
-    this.context.router.transitionTo(`/shows`);
+    this.props.dispatch(
+      pushState(null, '/shows')
+    );
   }
 
   onSelectMovies() {
     this.props.getMovies({ page: 1 })
-    this.context.router.transitionTo(`/`);
+    this.props.dispatch(
+      pushState(null, '/')
+    );
   }
 
   onSelectNowPlaying() {
-    this.context.router.transitionTo(`/screen`);
+    this.props.dispatch(
+      pushState(null, '/screen')
+    );
   }
 
   menuItems() {
@@ -44,8 +51,8 @@ export default class Header extends Component {
                   'horror', 'music', 'musical', 'mystery', 'romance', 'sci-fi', 'sport',
                   'thriller', 'war', 'western'], items = [];
 
-    genres.map((genre) => {
-      items.push(<MenuItem onSelect={()=> this.onSelectGenre(genre)} eventKey={genre}>{genre}</MenuItem>);
+    genres.map((genre, i) => {
+      items.push(<MenuItem key={i} onSelect={()=> this.onSelectGenre(genre)} eventKey={genre}>{genre}</MenuItem>);
     });
 
     return items;
@@ -55,13 +62,13 @@ export default class Header extends Component {
     return (
       <Navbar brand='At the Drive-In' inverse toggleNavKey={0}>
         <Nav right eventKey={0}> {/* This is the eventKey referenced */}
-          <NavItem onClick={this.onSelectMovies.bind(this)}>Movies</NavItem>
-          <NavItem onClick={this.onSelectTVShows.bind(this)}>TV Shows</NavItem>
-          <NavItem eventKey={1} onClick={this.onSelectHighestRated.bind(this)} href='#'>Highest Rated</NavItem>
-          <DropdownButton eventKey={2} title='Genres'>
+          <Button onClick={this.onSelectMovies.bind(this)}>Movies</Button>
+          <Button onClick={this.onSelectTVShows.bind(this)}>TV Shows</Button>
+          <Button onClick={this.onSelectHighestRated.bind(this)} href='#'>Highest Rated</Button  >
+          <NavDropdown title='Genres' id="genre-dropdown">
             {this.menuItems()}
-          </DropdownButton>
-          <NavItem onClick={this.onSelectNowPlaying.bind(this)}>Now Playing</NavItem>
+          </NavDropdown>
+          <Button onClick={this.onSelectNowPlaying.bind(this)}>Now Playing</Button>
 
         </Nav>
       </Navbar>

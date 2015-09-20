@@ -4,7 +4,7 @@ import { Loader } from '../index';
 import { watchShow } from '../../actions/shows';
 
 @connect(({ Shows }) => ({ Shows }))
-export default class ShowDetails extends React.Component {
+export default class ShowDetails extends Component {
 
   static contextTypes = {
     router: PropTypes.func.isRequired

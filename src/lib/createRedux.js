@@ -1,6 +1,10 @@
 import _ from 'lodash';
-import { createStore, combineReducers, applyMiddleware } from 'redux';
+import { createStore, combineReducers, compose, applyMiddleware } from 'redux';
+import { reduxReactRouter } from 'redux-router';
 import * as reducers from '../reducers/index';
+import routes from '../routes';
+import {createHistory} from 'history';
+import loggerMiddleware from 'redux-logger';
 
 function promiseMiddleware(api, { getState }) {
   return next =>
@@ -17,10 +21,19 @@ function promiseMiddleware(api, { getState }) {
     };
 }
 
-export default function (api, initialState) {
-  const createStoreWithMiddleware = applyMiddleware(promiseMiddleware.bind(null,
-    api))(createStore);
-  const reducer = combineReducers(reducers);
+export default function createRedux(api, initialState) {
 
-  return createStoreWithMiddleware(reducer, initialState);
+  // Compose reduxReactRouter with other store enhancers
+  const store = compose(
+    applyMiddleware(
+      promiseMiddleware.bind(null, api),
+      loggerMiddleware
+    ),
+    reduxReactRouter({
+      routes,
+      createHistory
+    })
+  )(createStore)(combineReducers(reducers));
+
+  return store;
 }

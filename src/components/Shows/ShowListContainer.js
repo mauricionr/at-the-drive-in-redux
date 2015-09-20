@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Component} from 'react';
 import { ShowsList } from '../index';
 import prepareRoute from '../../decorators/prepareRoute';
 import * as ShowsActionCreators from '../../actions/shows';
@@ -13,7 +13,7 @@ import { Loader } from '../index';
   ];
 })
 @connect(({ Shows }) => ({ Shows }))
-export default class ShowsListContainer {
+export default class ShowsListContainer extends Component {
 
   render() {
     const {

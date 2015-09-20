@@ -1,6 +1,6 @@
-import React from 'react';
+import React, {Component} from 'react';
 
-export default class SearchNav extends React.Component {
+export default class SearchNav extends Component {
 
   constructor(props, context) {
     super(props, context);
@@ -8,10 +8,10 @@ export default class SearchNav extends React.Component {
 
   _move(dir) {
     this.props.getMovies({
-      page: this.props.store.getState().Movies.toJS().page,
+      page: this.props.page,
       motion: dir,
-      genre: (this.props.store.getState().Movies.toJS().filtering.genre.on) ? this.props.store.getState().Movies.toJS().filtering.genre.value : undefined,
-      sort: (this.props.store.getState().Movies.toJS().filtering.sort.on) ? this.props.store.getState().Movies.toJS().filtering.sort.value : undefined
+      genre: (this.props.filtering.genre.on) ? this.props.filtering.genre.value : undefined,
+      sort: (this.props.filtering.sort.on) ? this.props.filtering.sort.value : undefined
     })
   }
 

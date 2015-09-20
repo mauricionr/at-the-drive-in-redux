@@ -1,14 +1,22 @@
-import React, { PropTypes } from 'react';
+import React, { Component, PropTypes } from 'react';
 import { Navigation } from 'react-router';
+import { pushState } from 'redux-router';
 
-let MovieList = React.createClass({
+export default class MovieList extends Component {
 
-  mixins: [ Navigation ],
+  constructor(props) {
+    super(props);
+  }
 
   _playMovie(movie) {
+
+    console.log('wtf', this.props, this)
+
     this.props.watchMovie(movie.magnet);
-    this.transitionTo(`/screen`);
-  },
+    this.props.dispatch(
+      pushState(null, '/screen')
+    );
+  }
 
   _renderMovies() {
 
@@ -35,7 +43,7 @@ let MovieList = React.createClass({
     });
 
     return movies;
-  },
+  }
 
   render() {
     return (
@@ -45,6 +53,4 @@ let MovieList = React.createClass({
     );
   }
 
-});
-
-export default MovieList;
+}

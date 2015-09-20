@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Component}from 'react';
 import { MovieList, Search, SearchNav } from '../index';
 import prepareRoute from '../../decorators/prepareRoute';
 import * as MoviesActionCreators from '../../actions/movies';
@@ -19,7 +19,7 @@ import { Loader } from '../index';
   }
 })
 @connect(({ Movies }) => ({ Movies }))
-export default class Root {
+export default class Root extends Component {
 
   render() {
     const {
@@ -29,14 +29,16 @@ export default class Root {
     } = this;
 
     const movies = Movies.get(`movies`).toJS();
+    const page = Movies.get(`page`);
+    const filtering = Movies.get(`filtering`).toJS();
     var view;
 
     if(movies && movies.length > 0) {
       view = <div>
         <Search {...bindActionCreators(moviesActions, this.props.dispatch)} />
-        <SearchNav {...bindActionCreators(moviesActions, this.props.dispatch)} store={this.props.route.store} />
-        <MovieList movies={movies} {...bindActionCreators(moviesActions, this.props.dispatch)} />
-        <SearchNav {...bindActionCreators(moviesActions, this.props.dispatch)} store={this.props.route.store} />
+        <SearchNav {...bindActionCreators(moviesActions, this.props.dispatch)} page={page} filtering={filtering} />
+        <MovieList movies={movies} {...bindActionCreators(moviesActions, this.props.dispatch)} dispatch={this.props.dispatch} />
+        <SearchNav {...bindActionCreators(moviesActions, this.props.dispatch)} page={page} filtering={filtering} />
       </div>
     } else {
       view = <Loader />

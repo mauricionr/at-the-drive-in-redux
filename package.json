@@ -11,10 +11,8 @@
     "peerflix": "^0.30.0",
     "qs": "^4.0.0",
     "raw-loader": "^0.5.1",
-    "react-bootstrap": "^0.24.3",
-    "react-hot-loader": "^1.2.8",
-    "react-router": "^1.0.0-beta2",
-    "redux": "^1.0.0-rc",
+    "react-bootstrap": "^0.25.100-react-pre.1",
+    "react-hot-loader": "^2.0.0-alpha-4",
     "style-loader": "^0.12.3",
     "superagent": "^1.2.0",
     "url": "^0.10.3",
@@ -24,8 +22,14 @@
   "dependencies": {
     "babel-runtime": "^5.8.20",
     "bluebird": "^2.9.34",
-    "react": "^0.13.3",
-    "react-redux": "^0.2.2",
-    "react-spinkit": "^1.1.2"
+    "history": "^1.9.1",
+    "react": "^0.14.0-rc1",
+    "react-dom": "^0.14.0-rc1",
+    "react-redux": "^2.1.2",
+    "react-router": "^1.0.0-rc1",
+    "react-spinkit": "^1.1.2",
+    "redux": "^3.0.0",
+    "redux-logger": "^1.0.8",
+    "redux-router": "^1.0.0-beta3"
   }
 }

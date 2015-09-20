@@ -1,15 +1,14 @@
 import React from 'react'
+import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import createRedux from './lib/createRedux';
 import request from 'superagent';
 import qs from 'qs';
 import createAPI from './lib/createAPI';
-import BrowserHistory from 'react-router/lib/BrowserHistory';
-import { Router } from './components/index';
+import { createHistory } from 'history';
+import { ReduxRouter } from 'redux-router';
 import urls from '../config/client';
-import AsyncProps from 'react-router/lib/experimental/AsyncProps';
 
-const history = new BrowserHistory;
 const api = createAPI(
 
   ({ method, headers = {}, pathname, query = {}, body = {} }) => {
@@ -27,9 +26,11 @@ const api = createAPI(
 /* global __INITIAL_STATE__:true */
 const store = createRedux(api, {});
 
-React.render(
+const history = createHistory();
+
+ReactDOM.render(
   <Provider {...{store}}>
-    {() => <Router {...{ history, store }} />}
+    <ReduxRouter />
   </Provider>,
   document.getElementById('app')
 )

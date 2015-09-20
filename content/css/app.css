@@ -4,6 +4,16 @@ body {
   background: #000;
 }
 
+.btn-default {
+  background-color: transparent;
+  border-color: transparent;
+}
+
+.btn-default:hover {
+  background-color: transparent;
+  border-color: transparent;
+}
+
 .navbar-collapse {
   padding-right: 40px;
 }

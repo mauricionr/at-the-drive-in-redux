@@ -1,10 +1,10 @@
 'use strict';
 
-import React from 'react';
+import React, {Component} from 'react';
 import { Router, Route } from 'react-router';
 import { Application, MovieListContainer, ShowListContainer, ShowDetails, Screen } from '../index';
 
-class AppRouter extends React.Component {
+class AppRouter extends Component {
 
   static propTypes = {
     history: React.PropTypes.object.isRequired

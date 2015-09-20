@@ -1,11 +1,12 @@
-import React, { PropTypes } from 'react';
+import React, { Component, PropTypes } from 'react';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
 
 @connect(({ Stream }) => ({ Stream }))
-export default class Screen extends React.Component {
+export default class Screen extends Component {
 
   render() {
+    console.log('hello?????', this.props)
 
     const {
       props: {

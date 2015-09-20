@@ -1,19 +1,17 @@
-import keyMirror from 'react/lib/keyMirror';
-
 export default {
-  Movies: keyMirror({
-    getMovies: null,
-    searchMovie: null,
-    watchMovie: null
-  }),
+  Movies: {
+    getMovies: 'getMovies',
+    searchMovie: 'searchMovies',
+    watchMovie: 'watchMovie'
+  },
 
-  Shows: keyMirror({
-    getShows: null,
-    getShow: null,
-    watchShow: null
-  }),
+  Shows: {
+    getShows: 'getShows',
+    getShow: 'getShow',
+    watchShow: 'watchShow'
+  },
 
-  Stream: keyMirror({
-    watch: null
-  })
+  Stream: {
+    watch: 'watch'
+  }
 };
